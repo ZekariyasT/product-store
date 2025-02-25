@@ -4,8 +4,8 @@ import { connectDB } from "./config/db.js";
 import Product from "./models/product.model.js";
 
 const app = express();
-
-app.post("/products", async (req, res) => {
+app.use(express.json());
+app.post("/api/products", async (req, res) => {
   const product = req.body;
   if (!product.name || !product.price || !product.image) {
     return res
