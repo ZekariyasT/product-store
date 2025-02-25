@@ -16,7 +16,7 @@ const productSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true,
+    timestamps: true, //add timestamos when create and delete
   }
 );
 const Product = mongoose.model("Product", productSchema);
