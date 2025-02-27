@@ -1,7 +1,7 @@
 import { Button, Container, Flex, HStack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { CiSquarePlus } from "react-icons/ci";
-import { useColorMode } from "./ui/color-mode";
+import { useColorMode, useColorModeValue } from "./ui/color-mode";
 import { IoMoon } from "react-icons/io5";
 import { LuSun } from "react-icons/lu";
 
@@ -33,17 +33,21 @@ const NavBar = () => {
         </Text>
         <HStack spacing={2} alignItems={"center"}>
           <Link to={"/create"}>
-            <Button style={{ backgroundColor: "#606060" }}>
-              <CiSquarePlus fontSize={30} style={{ color: "white" }} />
+            <Button bg={useColorModeValue("gray.100", "gray.900")}>
+              {colorMode === "light" ? (
+                <CiSquarePlus fontSize={30} style={{ color: "black" }} />
+              ) : (
+                <CiSquarePlus fontSize={30} style={{ color: "white" }} />
+              )}
             </Button>
           </Link>
 
           <Button
             onClick={toggleColorMode}
-            style={{ backgroundColor: "#606060" }}
+            bg={useColorModeValue("gray.100", "gray.900")}
           >
             {colorMode === "light" ? (
-              <IoMoon />
+              <IoMoon color="black" />
             ) : (
               <LuSun size={20} color="white" />
             )}
