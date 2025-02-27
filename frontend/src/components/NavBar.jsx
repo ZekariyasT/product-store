@@ -1,6 +1,10 @@
-import { Container, Flex, Link, Text } from "@chakra-ui/react";
+import { Button, Container, Flex, HStack, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import { CiSquarePlus } from "react-icons/ci";
+import { useColorMode } from "./ui/color-mode";
 
 const NavBar = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Container maxW={"1140px"} px={4}>
       <Flex
@@ -17,11 +21,27 @@ const NavBar = () => {
           fontWeight={"bold"}
           textTransform={"uppercase"}
           textAlign={"center"}
-          bgGradient={"linear(to-r,cyan.400,blue.500)"}
+          bgBlendMode="linear"
+          bgGradient="to-r"
+          gradientFrom="cyan.400"
+          gradientTo="blue.400"
           bgClip={"text"}
         >
           <Link to="/">Product Store 🛒</Link>
         </Text>
+        <HStack spacing={2} alignItems={"center"}>
+          <Link to={"/create"}>
+            <Button style={{ backgroundColor: "#606060" }}>
+              <CiSquarePlus fontSize={30} style={{ color: "white" }} />
+            </Button>
+          </Link>
+          <Button
+            onClick={toggleColorMode}
+            style={{ backgroundColor: "#606060" }}
+          >
+            {colorMode === "light" ? "🌜" : "🌞"}
+          </Button>
+        </HStack>
       </Flex>
     </Container>
   );
