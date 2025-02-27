@@ -1,12 +1,18 @@
 import { Button, Container, Flex, HStack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { CiSquarePlus } from "react-icons/ci";
-import { useColorMode } from "./ui/color-mode";
+import { useColorMode, useColorModeValue } from "./ui/color-mode";
+import { IoMoon } from "react-icons/io5";
+import { LuSun } from "react-icons/lu";
 
 const NavBar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Container maxW={"1140px"} px={4}>
+    <Container
+      maxW={"1140px"}
+      px={4}
+      bg={useColorModeValue("gray.100", "gray.900")}
+    >
       <Flex
         h={16}
         alignItems={"center"}
@@ -39,7 +45,11 @@ const NavBar = () => {
             onClick={toggleColorMode}
             style={{ backgroundColor: "#606060" }}
           >
-            {colorMode === "light" ? "🌜" : "🌞"}
+            {colorMode === "light" ? (
+              <IoMoon />
+            ) : (
+              <LuSun size={20} color="white" />
+            )}
           </Button>
         </HStack>
       </Flex>
