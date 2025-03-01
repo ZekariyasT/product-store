@@ -28,6 +28,7 @@ const CreatePage = () => {
     } else {
       toast.success(message);
     }
+    setNewProduct({ name: "", price: "", image: "" });
   };
   return (
     <Container maxW={"2xl"}>
