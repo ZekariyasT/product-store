@@ -27,35 +27,37 @@ const HomePage = () => {
           Current Products 🚀
         </Text>
         <SimpleGrid
-          column={{
+          columns={{
             base: 1,
             md: 2,
             lg: 3,
           }}
           spacing={10}
-          w={"full"}
+          w="100vw"
         >
-          {products.map((product) => {
-            <ProductCard key={product._id} product={product} />;
-          })}
+          {products.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))}
         </SimpleGrid>
-        <Text
-          fontSize="md"
-          textAlign={"center"}
-          fontWeight="bold"
-          color="gray.500"
-        >
-          No products found 😢
-          <Link to={"/create"}>
-            <Text
-              as="span"
-              color="blue.500"
-              _hover={{ textDecoration: "underline" }}
-            >
-              Create a product
-            </Text>
-          </Link>
-        </Text>
+        {products.length === 0 && (
+          <Text
+            fontSize="md"
+            textAlign={"center"}
+            fontWeight="bold"
+            color="gray.500"
+          >
+            No products found 😢
+            <Link to={"/create"}>
+              <Text
+                as="span"
+                color="blue.500"
+                _hover={{ textDecoration: "underline" }}
+              >
+                Create a product
+              </Text>
+            </Link>
+          </Text>
+        )}
       </VStack>
     </Container>
   );
